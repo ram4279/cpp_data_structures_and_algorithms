@@ -1,23 +1,10 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <vector>
+#include "mytree.h"
 
 using namespace std;
-
-struct Node
-{
-    int data;
-    Node* left;
-    Node* right;
-
-public:
-    /* Constructor */
-    Node(int data) {
-        this->data  = data;
-        this->left  = NULL;
-        this->right = NULL; 
-    }
-};
 
 Node* insert_into_tree(Node* root, Node* new_node)
 {
@@ -36,6 +23,54 @@ Node* insert_into_tree(Node* root, Node* new_node)
     return root;
 }
 
+
+void one_shot_traversal(Node* root)
+{
+    stack<pair<Node*,int>> stk;
+    vector<Node*> preorder, postorder, inorder;
+    if (!root) {
+        return;
+    }
+
+    auto root_pair = make_pair(root, 1);
+    stk.push(root_pair);
+    while (!stk.empty())
+    {
+        auto cur_node = stk.top();
+        stk.pop();
+        if (cur_node.second == 1) {
+            preorder.push_back(cur_node.first);
+            cur_node.second+=1;
+            stk.push(cur_node);
+            if (cur_node.first->left) {
+                auto new_pair = make_pair(cur_node.first->left, 1);
+                stk.push(new_pair);
+            }
+        } else if (cur_node.second == 2) {
+            inorder.push_back(cur_node.first);
+            cur_node.second+=1;
+            stk.push(cur_node);
+            if (cur_node.first->right) {
+                auto new_pair = make_pair(cur_node.first->right, 1);
+                stk.push(new_pair);
+            }
+        } else {
+            postorder.push_back(cur_node.first);
+        }
+    }
+    for (auto elem : preorder) {
+        cout << elem->data << " ";
+    }
+    cout << endl;
+    for (auto elem : inorder) {
+        cout << elem->data << " ";
+    }
+    cout << endl;
+    for (auto elem : postorder) {
+        cout << elem->data << " ";
+    }
+    cout << endl;
+}
 
 void iterative_preorder(Node* root)
 {
@@ -90,7 +125,6 @@ void iterative_postorder(Node* root)
     if (!root) {
         return;
     }
-    Node* right_guy = NULL;
     Node* temp      = NULL;
     stack<Node*> stk;
     while (root || !stk.empty()) {
@@ -150,28 +184,4 @@ void bfs_traversal(Node* root)
     }
     cout << endl;
     return;
-}
-
-int main()
-{
-    Node* root = NULL;
-    int arr[] = {3,7,1,2,6,5,9};
-    int len = sizeof(arr)/sizeof(arr[0]);
-
-    for (int i = 0; i < len; i++) {
-        Node* new_node = new Node(arr[i]);
-        root = insert_into_tree(root, new_node);
-    }
-    cout << endl;
-
-    cout << "Preorder " << endl;
-    iterative_preorder(root);
-    cout << "Inorder" << endl;
-    iterative_inorder(root);
-    cout << "Postorder " << endl;
-    iterative_postorder(root);
-    cout << "BFS " << endl;
-    bfs_traversal(root);
-
-    return 0;
 }
