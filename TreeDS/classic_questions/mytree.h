@@ -26,5 +26,11 @@ Node* insert_into_tree(Node* root, Node* new_node);
 int get_height_of_tree(Node* root);
 int get_height_of_tree_bfs(Node* root);
 
+int is_bst_helper(Node* root);
+bool is_bst_balanced(Node* root);
+
+
+int diameter_of_tree(Node* root);
+int diameter_helper(Node* root, int* diameter);
 
 #endif /* __MYREE__ */
