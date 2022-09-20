@@ -38,5 +38,17 @@ int main()
 
     cout << "diameter of BST = " << diameter_of_tree(root) << endl;
 
+    cout << "Max Path sum of BST = " << max_path_sum_of_bst(root) << endl;
+
+    /* Second tree */
+    Node* second_root = NULL;
+    for (int i = 0; i < len; i++) {
+        Node* new_node = new Node(arr[i]);
+        second_root = insert_into_tree(second_root, new_node);
+    }
+
+    cout << "Are tree1 and tree2 are same = " << are_both_tree_same(root, second_root) << endl;
+    cout << endl;
+
     return 0;
 }

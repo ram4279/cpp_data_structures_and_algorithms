@@ -23,6 +23,7 @@ void iterative_inorder(Node* root);
 void iterative_postorder(Node* root);
 void bfs_traversal(Node* root);
 Node* insert_into_tree(Node* root, Node* new_node);
+
 int get_height_of_tree(Node* root);
 int get_height_of_tree_bfs(Node* root);
 
@@ -32,5 +33,10 @@ bool is_bst_balanced(Node* root);
 
 int diameter_of_tree(Node* root);
 int diameter_helper(Node* root, int* diameter);
+
+int max_path_sum_of_bst(Node* root);
+int max_path_sum_of_bst_helper(Node* root, int* gmax);
+
+bool are_both_tree_same(Node* root1, Node* root2);
 
 #endif /* __MYREE__ */

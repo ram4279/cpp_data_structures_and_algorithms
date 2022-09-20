@@ -26,9 +26,8 @@ all: $(BINARY)
 $(BINARY): $(OBJFILES)
 	$(CPP) -o $@ $^
 
-# InCorrect one
 %.o: %.cpp
-	$(CPP) $(CFLAGS) -c -o $@ $^
+	$(CPP) $(CFLAGS) -c -o $@ $<
 
 
 clean:
@@ -57,4 +56,4 @@ clean:
 # 	g++ -c maxheight_of_bst.cpp
 
 # clean:
-# 	rm *.o runner
+# 	rm *.o runner 
