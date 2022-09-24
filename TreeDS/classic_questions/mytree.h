@@ -39,4 +39,8 @@ int max_path_sum_of_bst_helper(Node* root, int* gmax);
 
 bool are_both_tree_same(Node* root1, Node* root2);
 
+void zig_zag_traversal(Node* root);
+void cc_boundary_traversal(Node* root);
+
+
 #endif /* __MYREE__ */

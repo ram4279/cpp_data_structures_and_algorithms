@@ -2,6 +2,7 @@
 #include <stack>
 #include <queue>
 #include <vector>
+#include <deque>
 #include "mytree.h"
 
 using namespace std;
@@ -184,4 +185,127 @@ void bfs_traversal(Node* root)
     }
     cout << endl;
     return;
+}
+
+/**
+ * → Traverse left to right and then
+ * ← Traverse right to left
+ * @param root 
+ */
+
+void zig_zag_traversal(Node* root)
+{
+    bool ltor = true; /* left to right */
+    deque<Node*> dq;
+    vector<vector<Node*>> result;
+    if (!root) {
+        return;
+    }
+    dq.push_back(root);
+    while (!dq.empty()) {
+        /* Get the number of nodes at this level */
+        int no_of_nodes = dq.size();
+        vector<Node*> temp_res(no_of_nodes);
+        for (int i = 0; i < no_of_nodes; i++)
+        {
+            Node* curr = dq.front();
+            dq.pop_front();
+            
+            if (ltor) {
+                temp_res[i] = curr;
+            } else {
+                temp_res[no_of_nodes-1-i] = curr;
+            }
+
+            if (curr->left) {
+                dq.push_back(curr->left);
+            }
+            if (curr->right) {
+                dq.push_back(curr->right);
+            }
+        }
+        result.push_back(temp_res);
+        ltor = !ltor;
+    }
+
+    for ( const auto &row : result)
+    {
+        for ( const auto &item : row ) 
+            cout << item->data << ' ';
+    }
+    cout << endl;
+    
+}
+
+static void cc_boundary_traversal_helper(Node* root)
+{
+    if (!root) {
+        return;
+    }
+    cc_boundary_traversal_helper(root->left);
+    if (!root->left && !root->right) {
+        cout << root->data << " ";
+    }
+    cc_boundary_traversal_helper(root->right);
+}
+
+/**
+ * Counter clock  wise boundary traversal
+ * 
+ *   Go left boundaries first and then all leaf node and then all 
+ *   right boundaries
+ *    
+ *   https://media.geeksforgeeks.org/wp-content/cdn-uploads/BoundryTraversal-300x188.gif
+ * 
+ */
+void cc_boundary_traversal(Node* root)
+{
+    if (!root) {
+        return;
+    }
+    cout << root->data << " ";
+    /* Part 1: traverse left boundary nodes excluding leaves */
+    Node* curr = root;
+    while (curr) {
+        if (curr->left) {
+            curr = curr->left;
+            if (curr->left || curr->right) {
+                cout << curr->data << " ";
+            }
+        } else if (curr->right) {
+            curr = curr->right;
+            if (curr->left || curr->right) {
+                cout << curr->data << " ";
+            }
+        } else {
+            break;
+        }
+    }
+
+    /* Part 2: print leaf nodes */
+    cc_boundary_traversal_helper(root);
+
+    /* Part 3: print right boundary nodes in reverse order */
+    vector<Node*> res;
+    curr = root;
+    while (curr) {
+        if (curr->right) {
+            curr = curr->right;
+            if (curr->left || curr->right) {
+                res.push_back(curr);
+            }
+        } else if (curr->left) {
+            curr = curr->left;
+            if (curr->left || curr->left) {
+                res.push_back(curr);
+            }
+        } else {
+            break;
+        }
+    }
+
+    for (auto it = res.rbegin(); it != res.rend(); ++it) {
+        cout << (*it)->data << " ";
+    }
+    cout << endl;
 }

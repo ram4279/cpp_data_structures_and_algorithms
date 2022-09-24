@@ -24,6 +24,12 @@ int main()
     cout << "BFS " << endl;
     bfs_traversal(root);
 
+    cout << "Zig Zag" << endl;
+    zig_zag_traversal(root);
+
+    cout << "counter clock boundary traversal" << endl;
+    cc_boundary_traversal(root);
+
     cout << "One shot traversal" << endl;
     one_shot_traversal(root);
 
