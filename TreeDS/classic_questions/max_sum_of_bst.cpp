@@ -15,6 +15,7 @@ See below diagram for another example.
 */
 
 #include <iostream>
+#include <climits>
 #include "mytree.h"
 
 using namespace std;
