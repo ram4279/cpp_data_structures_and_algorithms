@@ -10,15 +10,19 @@ int main()
     struct ifaddrs *addresses = NULL;
     struct ifaddrs *address = NULL;
     char ip[100] = {0};
-    int family_size = 0;
-    
+    size_t family_size = 0;
+
+    // Call getifaddrs function to get the interfaces in a linked list 
+    // This function allocated the memory as well
     if ((err = getifaddrs(&addresses))) {
         printf("Getting interfaces failed\n");
         return err;
     }
 
+    // Make address point to first result
     address = addresses;
 
+    // Traverse and print
     while(address) {
         int family = address->ifa_addr->sa_family;
         if (family == AF_INET || family == AF_INET6) {
