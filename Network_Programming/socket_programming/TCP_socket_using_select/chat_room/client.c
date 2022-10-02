@@ -9,7 +9,6 @@ int main(int argc, char** argv)
         return 1;
     }
     
-    SOCKET fd;
     struct addrinfo hints;
     memset(&hints, 0, sizeof(hints));
 
