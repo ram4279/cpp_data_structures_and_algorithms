@@ -1,0 +1,34 @@
+Think and ask about constraints:
+================================
+1. What will be the inputs?  all positive numbers, negative numbers
+2. Will there be solution always?
+3. Will there be duplicates?
+4. What should be return value?
+5. Think about boundary cases?
+6. Need multiple results or one result enough?
+
+Write some test cases:
+======================
+1. List a TC having solution
+2. List a TC having no solution
+3. If arrays are to be given as input
+    - Consider empty array
+    - Consider sorted array
+
+Write code:
+===========
+1. Come up with naive or bruteforce solution first
+2. Identify DS or algo that can reduce the time complexity
+3. Check bit manipulation is possible
+4. Write code.
+
+Revisit code:
+=============
+1. Check typo of variable names
+2. Check open and close braces
+3. Check Semi colon / intendation
+4. Walk through each line of code
+
+Test/Debug solution:
+====================
+Add logs at necessary places

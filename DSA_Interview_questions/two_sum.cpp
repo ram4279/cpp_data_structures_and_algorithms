@@ -25,9 +25,12 @@ int main()
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
+
+    //O(nlogn)
     sort(arr, arr+n);
     int l = 0, r = n - 1;
 
+    // Two pointer approach
     while (l < r) {
         int sum = arr[l] + arr[r];
         if (sum > k) {
