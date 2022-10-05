@@ -32,3 +32,9 @@ Revisit code:
 Test/Debug solution:
 ====================
 Add logs at necessary places
+
+Hints:
+======
+1. Check for words like greatest (maximum value question), smallest(minimum value question) in the question
+2. Check if caching is needed
+3. Check if two pointers can help
