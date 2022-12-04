@@ -25,6 +25,11 @@ void convert_endianess(unsigned int val)
     printf("%x\n", res);
 }
 
+#define SWAP_INT32(x) (((x) >> 24) | (((x) & 0x00FF0000) >> 8) | (((x) & 0x0000FF00) << 8) | ((x) << 24))
+
+
+
+
 void simple_convert_endianess(unsigned int val)
 {
     printf("Before conversion ");
