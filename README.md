@@ -1,1 +1,3 @@
-# cpp_data_structures_and_algorithms
+# c and cpp basic concepts
+# data_structures_and_algorithms
+# Linux and Network programming
