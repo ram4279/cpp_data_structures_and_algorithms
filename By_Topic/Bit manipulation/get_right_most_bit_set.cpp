@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdint.h>
 #include <bitset>
 using namespace std;
 
@@ -19,9 +20,9 @@ Two ways to get twos complement of the given number.
 */
 int main(int argc, char const *argv[])
 {
-    u_int32_t number = 324;
-    u_int32_t mask_rsb = number & -number;
-    u_int32_t mask_rsb2 = number & ((~number) + 1);
+    uint32_t number = 324;
+    uint32_t mask_rsb = number & -number;
+    uint32_t mask_rsb2 = number & ((~number) + 1);
     bitset<M> number_set(number);
     bitset<M> rsb_mask_bitset(mask_rsb);
     cout << "RSB (Right most set) mask of " << number_set 
