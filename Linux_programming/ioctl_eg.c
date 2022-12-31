@@ -17,7 +17,8 @@ int main(int argc, char **argv)
 
     int sock_fd;
     struct ifreq ifr;
-    char mac_addr[6];
+    char mac_addr[6] = {0};
+	memset(ifr, 0, sizeof(struct ifreq));
 
     // Create a socket
     sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -34,7 +35,7 @@ int main(int argc, char **argv)
         perror("ioctl() failed");
         exit(EXIT_FAILURE);
     }
-    memcpy(mac_addr, ifr.ifr_hwaddr.sa_data, 6);
+    memcpy(mac_addr, ifr.ifr_hwaddr.sa_data, sizeof(mac_addr));
 
     // Print the MAC address
     printf("MAC address of interface %s: %02x:%02x:%02x:%02x:%02x:%02x\n", argv[1],
