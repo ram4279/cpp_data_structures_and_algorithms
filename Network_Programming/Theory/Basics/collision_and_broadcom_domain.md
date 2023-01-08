@@ -1,0 +1,3 @@
+- HUB creates both collision and broadcast domain
+- Switch separates collision domain but still increases broadcast domain
+- Router separates both collision and broadcast domain.
