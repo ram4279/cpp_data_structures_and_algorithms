@@ -28,7 +28,48 @@ void convert_endianess(unsigned int val)
 #define SWAP_INT32(x) (((x) >> 24) | (((x) & 0x00FF0000) >> 8) | (((x) & 0x0000FF00) << 8) | ((x) << 24))
 
 
+void swap_endianess(unsigned int val)
+{
+    unsigned int res = 0;
+    printf("Before conversion ");
+    printf("%x\n", val);
 
+    res |= (val /*& 0x000000FF*/) << 24;
+    res |= (val & 0x0000FF00) << 8;
+    res |= (val & 0x00FF0000) >> 8;
+    res |= (val /*& 0xFF000000*/) >> 24;
+
+    printf("After conversion ");
+    printf("%x\n", res);
+}
+
+/**
+ * 
+    higher memory
+       ----->
+ +----+----+----+----+
+ |0x01|0x00|0x00|0x00|
+ +----+----+----+----+
+ ^
+ |
+&data
+*/
+void print_endianess_union()
+{
+    union data
+    {
+        int var_x;
+        char x;
+    } data;
+
+    data.var_x = 1;
+    if (data.x == 1) {
+        printf("Little indian\n");
+    } else {
+        printf("Big endian\n");
+    }
+    
+}
 
 void simple_convert_endianess(unsigned int val)
 {
@@ -48,6 +89,7 @@ int main(int argc, char const *argv[])
 {
     print_endianess();
     simple_convert_endianess(0xDEADBEEF);
+    print_endianess_union();
+    swap_endianess(0xDEADBEEF);
     return 0;
-
 }

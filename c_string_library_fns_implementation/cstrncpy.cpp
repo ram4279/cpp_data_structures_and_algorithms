@@ -14,6 +14,16 @@ char* mstrncpy(char *dst, const char *src, size_t len)
     return temp;
 }
 
+char* mstrncpy2(char *dst, const char *src, size_t len)
+{
+    assert(dst != NULL && src != NULL);
+    char *temp = dst;
+    for (int i = 0; i < len; i++) {
+        dst[i] = src[i];
+    }
+    return temp;
+}
+
 int main(int argc, char **argv)
 {
     const char *str = "batman";
@@ -31,7 +41,7 @@ int main(int argc, char **argv)
     cout << "str = " << str << " buffer value = " << buffer << endl;
 
     str = "scarlett witch and vision";
-    cout << "str = " << str << " buffer value = " << mstrncpy(buffer, str, strlen(str))<< endl;
+    cout << "str = " << str << " buffer value = " << mstrncpy2(buffer, str, strlen(str))<< endl;
 
 
      return 0;
