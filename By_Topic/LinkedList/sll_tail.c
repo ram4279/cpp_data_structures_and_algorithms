@@ -176,6 +176,26 @@ void insert(sll *list, int data, int position)
     return;
 }
 
+
+void sorted_insert(sll *list, int val)
+{
+    Node* newnode = create_node(val);
+    Node* curr = list->head;
+    Node* prev = NULL;
+    while (curr && val > curr->data) {
+        prev = curr;
+        curr = curr->next;
+    }
+    if (prev == NULL) {
+        newnode->next = list->head;
+        list->head = newnode;
+        return;
+    } else {
+        newnode->next = prev->next;
+        prev->next = newnode;
+    }
+}
+
 void delete(sll *list, int position)
 {
     if (list->count <= 0) {
@@ -224,6 +244,27 @@ void reverse_list(sll* list)
         curr = next;
     }
     list->head = prev;
+}
+
+Node* reverse_list_rec_helper(Node* head)
+{
+    if (!head->next) {
+        return head;
+    }
+    Node* newhead = reverse_list_rec_helper(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return newhead;
+}
+
+void reverse_list_rec(sll* list)
+{
+    if (!list->head) {
+        return;
+    } else {
+        list->head = reverse_list_rec_helper(list->head);
+    }
+    return;
 }
 
 void delete_list(sll* list)
@@ -319,6 +360,11 @@ int main(int argc, char const *argv[])
             reverse_list(num_list);
         } else if (option == 3) {
             swapPairs(num_list);
+        } else if (option == 4) {
+            scanf("%d", &number);
+            sorted_insert(num_list, number);
+        } else if (option == 5) {
+            reverse_list_rec(num_list);
         }
         print_list(num_list);
     }
@@ -329,8 +375,6 @@ int main(int argc, char const *argv[])
     // print_list(num_list);
     // swap_nodes(num_list, num_list->head->next, num_list->head->next->next);
     // print_list(num_list);
-
-    
 
     return 0;
 }
