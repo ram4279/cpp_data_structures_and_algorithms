@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     int sock_fd;
     struct ifreq ifr;
     char mac_addr[6] = {0};
-	memset(ifr, 0, sizeof(struct ifreq));
+	memset(&ifr, 0, sizeof(struct ifreq));
 
     // Create a socket
     sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
