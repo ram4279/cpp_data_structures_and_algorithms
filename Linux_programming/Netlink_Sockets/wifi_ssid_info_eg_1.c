@@ -1,5 +1,4 @@
 #include <stdio.h>
-//#include <linux/netlink.h>
 #include <netlink/netlink.h>
 #include <netlink/genl/genl.h>
 #include <netlink/genl/family.h>
@@ -27,7 +26,7 @@ static int print_ssid(struct nl_msg* msg, void* arg)
 	struct genlmsghdr *gnlh = (struct genlmsghdr*) nlmsg_data(ret_hdr);
 
 	/* nla_parse function is used to parse and extract the attributes of a netlink message. */
-	nla_parse(tb_msg, NL80211_ATTR_MAX, genlmsg_attrdata(gnlh, 0), genlmsg_attrlen(gnlh, 0), NULL);
+	nla_parse(tb_msg, NL80211_ATTR_MAX, genlmsg_attrdata(gnlh, 0), genlmsg_attrlen(gnlh, 0), NULL);	
 
 	if (tb_msg[NL80211_ATTR_IFNAME]) {
 		printf("Interface = %s\n", nla_get_string(tb_msg[NL80211_ATTR_IFNAME]));
