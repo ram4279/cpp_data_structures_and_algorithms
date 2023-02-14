@@ -7,7 +7,7 @@ ifeq ($(DEBUG),y)
 CFLAGS += -g
 endif
 
-BINARY = ll_main
+BINARY   = ll_main
 CFILES   = $(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
 OBJFILES = $(patsubst %.c,%.o,$(CFILES))
 
