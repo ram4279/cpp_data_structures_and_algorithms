@@ -23,9 +23,8 @@ long long count_words(char* ptr)
             prev_space = 0;
         }
     }
-
-    return count;
     fclose(fp);
+    return count;
 }
 
 

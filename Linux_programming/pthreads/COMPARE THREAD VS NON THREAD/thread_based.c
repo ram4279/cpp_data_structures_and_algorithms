@@ -27,8 +27,8 @@ void* count_words(void* arg)
         }
     }
 
-    return count;
     fclose(fp);
+    return count;
 }
 
 int main(int argc, char const *argv[])
