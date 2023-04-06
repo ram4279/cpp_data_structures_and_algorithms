@@ -1,0 +1,41 @@
+Heap
+- Complete Binary tree
+    All level filled may be except final level. And final level is partially
+    filled from left to right mandatiroly.
+
+Represented mostly using Arrays because of the left to right
+insertion property.
+- To get left child = 2*index + 1;
+- To get right child = 2*index + 2;
+- To get parent = (i - 1)/2;
+
+Insert:
+1 Check if heap is at capacity
+2 If not add the element at the end
+3 Now start correcting the heap from bottom to up.
+4 If child is smaller than its root swap it with its parent
+5 Do the same for the parent now till root is reached or step 4 is not satisified
+
+Heapify
+1 Get smallest of curr root, left child, right child
+2 Make sure to check out of bound index check before
+3 Swap the smallest element from step 1 with root.
+4 Recurse step 3 till smallest element is not equal to root
+
+extract min
+1 Check if heap is empty
+2 store the top element in some temp variable
+3 Swap last element with top element
+4 Now the root element will break the heap propery
+5 Correct the heap property using Heapify function on index 0
+
+
+Replace element at index
+0 Replace the element at given index
+1 Convert to min heap from given index
+2 Use insert logic
+
+Delete element at index
+0 Replace element at index with INT_MIN
+1 Now the INT_MIN will come at top
+2 Now remove the INT_MIN using extract min function
