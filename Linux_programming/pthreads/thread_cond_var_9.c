@@ -17,6 +17,7 @@ pthread_cond_t cond_fuel;
 
 void* fuel_handler()
 {
+    printf("%s called\n", __func__);
     for (int i = 0; i < 10; i++) {
         pthread_mutex_lock(&mutex_fuel);
         fuel_gvar += 10;
@@ -29,6 +30,7 @@ void* fuel_handler()
 
 void* car_handler()
 {
+    printf("%s called\n", __func__);
     pthread_mutex_lock(&mutex_fuel);
     while (fuel_gvar < 50) {
         printf("Car is not moving\n");

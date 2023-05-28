@@ -15,6 +15,7 @@ int main(int argc, char** argv)
 		return 1;
 	}
 
-	sleep(3);
+    // Only uncommenting below line you can see output else main will run and complete first
+	//sleep(3);
 	return 0;
 }

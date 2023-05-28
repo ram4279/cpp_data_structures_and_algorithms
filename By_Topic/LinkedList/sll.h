@@ -20,7 +20,6 @@ typedef struct sll
 {
     Node* head;
     int count;
-
 }sll;
 #endif /* __LL_TAIL__ */
 

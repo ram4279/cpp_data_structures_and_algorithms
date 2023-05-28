@@ -1,0 +1,15 @@
+#entry point of the elf is given by
+ENTRY(SYMBOL_NAME)
+
+#MEMORY syntax is used to define start and size of different MEMORY sections
+MEMORY
+{
+    name(attr): ORIGIN=origin, LENGTH=len
+}
+
+name(attr):  Defines the name of the memory which will be later referenced
+in the linker script
+
+ORIGIN: Defines starting address of the memory
+
+LENGTH: defines length

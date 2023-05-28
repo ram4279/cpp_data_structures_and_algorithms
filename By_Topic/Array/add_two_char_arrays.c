@@ -20,8 +20,8 @@ int main(int argc, char const *argv[])
     char res[MAX_BUFF_SIZE + 1] = {0};
 
 
-    scanf("%s", num1);
-    scanf("%s", num2);
+    scanf("%s", &num1);
+    scanf("%s", &num2);
 
     int len1 = mstrlen(num1);
     int len2 = mstrlen(num2);

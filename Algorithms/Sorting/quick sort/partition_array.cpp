@@ -5,7 +5,7 @@ using namespace std;
 
 /*
 Remember there are three regions
-0 - last => unknown
+i - last => unknown
 0 - j-1 => less than equal to pivot
 j - i-1 => greater than pivot
 

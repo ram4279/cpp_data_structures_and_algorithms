@@ -12,20 +12,15 @@ void printArray(int (&a)[N]) {
 
 void selection_sort(int* arr, int len)
 {
-    int l = 0, r = 0;
-    int mini_idx = 0;
-    int min = 0; 
-    while (l < len) {
-        mini_idx = l;
-        r = l+1;
-        while (r < len) {
-            if (arr[r] < arr[mini_idx]) {
-                mini_idx = r;
+    
+    for (int i = 0; i < len; i++) {
+        int smallest_index = i;
+        for (int j = i + 1; j < len; j++) {
+            if (arr[smallest_index] > arr[j]) {
+                smallest_index = j;
             }
-            r++;
         }
-        swap(arr[mini_idx], arr[l]);
-        l++;
+        swap(arr[smallest_index], arr[i]);
     }
 }
 
