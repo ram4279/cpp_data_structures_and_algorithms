@@ -2,4 +2,5 @@
 *.exe
 *.o
 *.d
+a.out
 temp.txt
