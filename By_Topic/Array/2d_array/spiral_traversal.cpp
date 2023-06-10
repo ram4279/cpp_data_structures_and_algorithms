@@ -1,3 +1,30 @@
+/*
+Traverse in spiral display down right up left repeat
+Sample Input
+3
+5
+11 12 13 14 15
+21 22 23 24 25
+31 32 33 34 35
+Sample Output
+11
+21
+31
+32
+33
+34
+35
+25
+15
+14
+13
+12
+22
+23
+24
+*/
+
+
 #include <iostream>
 using namespace std;
 
