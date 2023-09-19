@@ -30,9 +30,6 @@ int main(int argc, char const *argv[])
         }
     }
 
-    int *smallest_arr = malloc(sizeof(int) * n);
-    int *largest_arr = malloc(sizeof(int) * n);
-
     for (int r = 0; r < n; r++)
     {
         int min = 0;
