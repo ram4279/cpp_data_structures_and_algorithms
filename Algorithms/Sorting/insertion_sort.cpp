@@ -50,7 +50,6 @@ void insertion_sort(int* arr, int len)
 int main(int argc, char const *argv[])
 {
     int arr[] = {5,4,3,2,1,0,1,2,3,4,5};
-    
     int len = sizeof(arr)/sizeof(arr[0]);
     printArray(arr, len);
     insertion_sort(arr, len);
